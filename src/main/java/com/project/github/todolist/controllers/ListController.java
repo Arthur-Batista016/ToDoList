@@ -4,12 +4,10 @@ import com.project.github.todolist.models.Lista;
 import com.project.github.todolist.repositories.ListRepository;
 import com.project.github.todolist.services.ListService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/list")
@@ -18,14 +16,25 @@ public class ListController {
     @Autowired
     private ListService service;
 
-    @GetMapping
+    @GetMapping("/Get")
     public List<Lista> GetLists(){
-        List<Lista> lists = service.findAll();
+        List<Lista> lists = service.findAllLists();
         return lists;
     }
 
-    @PostMapping
-    public void createList(Lista newList){
+    @GetMapping("/Get/{id}")
+    public Optional<Lista> findListById( @PathVariable Long id){
+        Optional<Lista> result = service.findListById(id);
+        return result;
+    }
+
+    @PostMapping("/Create")
+    public void createList( @RequestBody Lista newList){
         service.CreateList(newList);
+    }
+
+    @DeleteMapping("/Delete/{id}")
+    public void DeleteListById( @PathVariable Long id){
+        service.DeleteListById(id);
     }
 }

@@ -1,11 +1,24 @@
 package com.project.github.todolist.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import com.project.github.todolist.enums.SituationEnum;
+import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
+@Getter
+@Setter
 @Table(name = "TB_ITEM")
 public class Item {
-    private int itemID;
-    private boolean situation;
+
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int itemId;
+
+    private String itemName;
+
+    @Enumerated(EnumType.STRING)
+    private SituationEnum situation;
+
 }
