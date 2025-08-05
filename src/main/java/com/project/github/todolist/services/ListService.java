@@ -24,11 +24,11 @@ public class ListService {
         return result;
     }
 
-    public void CreateList(Lista newList){
+    public void createList(Lista newList){
         repository.save(newList);
     }
 
-    public void DeleteListById(Long id){
+    public void deleteListById(Long id){
         repository.deleteById(id);
     }
 }

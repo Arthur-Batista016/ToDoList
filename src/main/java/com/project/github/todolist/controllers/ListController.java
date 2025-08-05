@@ -17,7 +17,7 @@ public class ListController {
     private ListService service;
 
     @GetMapping("/Get")
-    public List<Lista> GetLists(){
+    public List<Lista> GetLists() {
         List<Lista> lists = service.findAllLists();
         return lists;
     }
@@ -30,11 +30,11 @@ public class ListController {
 
     @PostMapping("/Create")
     public void createList( @RequestBody Lista newList){
-        service.CreateList(newList);
+        service.createList(newList);
     }
 
     @DeleteMapping("/Delete/{id}")
     public void DeleteListById( @PathVariable Long id){
-        service.DeleteListById(id);
+        service.deleteListById(id);
     }
 }

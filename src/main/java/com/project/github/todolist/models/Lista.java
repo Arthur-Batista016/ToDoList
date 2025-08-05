@@ -12,6 +12,18 @@ import java.util.List;
 @Table(name = "TB_LIST")
 public class Lista {
 
+    public Lista(){
+
+    }
+
+    public Lista(Long listId, String title, List<Item> itens){
+        this.listId = listId;
+        this.title = title;
+        this.setItens(itens);
+
+
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long listId;
@@ -19,7 +31,8 @@ public class Lista {
     private String title;
 
     @OneToMany
-    @JoinColumn(name = "itemID")
-    private List<Item> item;
+    private List<Item> itens;
+
+
 
 }
