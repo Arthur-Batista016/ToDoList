@@ -1,5 +1,6 @@
 package com.project.github.todolist.models;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -30,7 +31,8 @@ public class Lista {
 
     private String title;
 
-    @OneToMany
+    @OneToMany(mappedBy = "lista", cascade = CascadeType.ALL)
+    @JsonManagedReference
     private List<Item> itens;
 
 

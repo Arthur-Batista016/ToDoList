@@ -1,5 +1,6 @@
 package com.project.github.todolist.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.project.github.todolist.enums.SituationEnum;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -35,8 +36,10 @@ public class Item {
     @Enumerated(EnumType.STRING)
     private SituationEnum situation;
 
+
     @ManyToOne
-    @JoinColumn(name = "lista_id") // Essa será a FK na tabela TB_ITEM
+    @JoinColumn(name = "lista_id")
+    @JsonBackReference
     private Lista lista;
 
 }
