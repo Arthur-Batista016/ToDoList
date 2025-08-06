@@ -28,6 +28,10 @@ public class ListService {
         repository.save(newList);
     }
 
+    public Lista updateList(Lista list){
+        return repository.save(list);
+    }
+
     public void deleteListById(Long id){
         repository.deleteById(id);
     }

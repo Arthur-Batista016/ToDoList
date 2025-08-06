@@ -33,6 +33,11 @@ public class ListController {
         service.createList(newList);
     }
 
+    @PutMapping("/Update")
+    public Lista updateList( @RequestBody Lista list){
+        return service.updateList(list);
+    }
+
     @DeleteMapping("/Delete/{id}")
     public void DeleteListById( @PathVariable Long id){
         service.deleteListById(id);
